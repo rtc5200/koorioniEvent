@@ -1,0 +1,65 @@
+name: onigokko
+main: com.ur.onigokko.Main
+version: 0.3
+author: _RailgunS_
+commands:
+  onigokko-ready:
+    description: Prepare for Onigokko
+    usage: /onigokko-ready
+  onigokko-exit:
+    description: Exit Onigokko
+    usage: /onigokko-exit
+  onigokko-b:
+    description: Add BlueTeamMember and Delete From redTeam
+    usage: /onigokko-b (player)
+  onigokko-b-random:
+    description: Pick up players to Blue Team
+    usage: /onigokko-b-random [amount]
+  onigokko-tp-r:
+    description: Tereport RedTeam
+    usage: /onigokko-tp-r <x> <y> <z>
+  onigokko-tp-b:
+    description: Teleport BlueTeam
+    usage: /onigokko-tp-b <x> <y> <z>
+  onigokko-r:
+    description: Add RedTeamMember
+    usage: /onigokko-r (player)
+  onigokko-remove:
+    description: Remove Player from the team
+    usage: /onigokko-remove (player)
+  onigokko-freeze:
+    description: Freeze Player
+    usage: /onigokko-freeze [RedTeamPlayer]
+  onigokko-unfreeze:
+    description: UnFreeze Player
+    usage: /onigokko-unfreeze [RedTeamPlayer]
+  onigokko-freeze-all:
+    description: Freeze all
+    usage: /onigokko-freeze-all
+  onigokko-unfreeze-all:
+    description: UnFreeze all
+    usage: /onigokko-unfreeze-all
+  onigokko-hs:
+    description: Set Hunter Speed Level
+    usage: /onigokko-hs [level]
+  onigokko-give-r:
+    description: Give item to Red Team
+    usage: /onigokko-give-r [id] [amount]
+  onigokko-give-b:
+    description: Give item to Blue Team
+    usage: /onigokko-give-b [id] [amount]
+  diamond-enderchest:
+    description: get Player's amount of DIAMOND in enderchest
+    usage: /diamond-enderchest (player)
+  diamond-inventory:
+    description: get Player's amount of DIAMOND in Inventory
+    usage: /diamond-inventory (player)
+  sneak:
+    description: Toggle Sneaking
+    usage: /sneak
+  debug:
+    description: debug
+    usage: /debug additem/removeitem
+permissions:
+  onigokko.gm:
+    default: op
