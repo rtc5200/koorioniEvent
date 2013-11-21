@@ -133,22 +133,26 @@ public class SbManager {
 	}
 	public void removePlayer(Player player)
 	{
-		if(red.hasPlayer(player))
+		if(player != null)
 		{
-			red.removePlayer(player);
-			SetPlayerColor(player,ChatColor.RESET);
-			InventoryUtil.RedTeamUnEquip(player);
-		}else if(blue.hasPlayer(player))
-		{
-			blue.removePlayer(player);
-			SetPlayerColor(player,ChatColor.RESET);
-			InventoryUtil.BlueTeamEquip(player,main.ongk);
-		}else if(black.hasPlayer(player))
-		{
-			black.removePlayer(player);
-			SetPlayerColor(player,ChatColor.RESET);
-			InventoryUtil.RedTeamUnEquip(player);
+			if(red.hasPlayer(player))
+			{
+				red.removePlayer(player);
+				SetPlayerColor(player,ChatColor.RESET);
+				InventoryUtil.RedTeamUnEquip(player);
+			}else if(blue.hasPlayer(player))
+			{
+				blue.removePlayer(player);
+				SetPlayerColor(player,ChatColor.RESET);
+				InventoryUtil.BlueTeamEquip(player,main.ongk);
+			}else if(black.hasPlayer(player))
+			{
+				black.removePlayer(player);
+				SetPlayerColor(player,ChatColor.RESET);
+				InventoryUtil.RedTeamUnEquip(player);
+			}
 		}
+		
 	}
 	public void resetcolor()
 	{
@@ -263,10 +267,10 @@ public class SbManager {
 			{
 				SetPlayerColor(olp, ChatColor.RESET);
 				setScore(olp,0);
-				if(main.ongk.PlayerFreezeStats.containsKey(olp))
+				/*if(main.ongk.PlayerFreezeStats.containsKey(olp))
 				{
 					main.ongk.PlayerFreezeStats.remove(olp);
-				}
+				}*/
 			}
 		}
 	}

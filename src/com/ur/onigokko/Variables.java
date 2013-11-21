@@ -1,5 +1,8 @@
 package com.ur.onigokko;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Material;
 
 public class Variables {
@@ -21,6 +24,7 @@ public class Variables {
 	public static String MONEY_ITEM_NAME = "お金";
 	public static String SNOWBALL_NAME = "閃光弾";
 	public static String MESSAGE_NotHavePermission = "あなたはゲームマスターじゃないですよね？何やってるんですか？";
-	
-
+	public static String MESSAGE_ValidArgument = "引数が不正です";
+	public static String MESSAGE_NotStartedGame = "ゲームが開始されていません";
+	public static String MESSAGE_PlayerIsNotOnline = "プレイヤーはオフラインです";
 }

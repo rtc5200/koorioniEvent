@@ -52,7 +52,6 @@ public class onigokko extends JavaPlugin implements Listener
 	Team blueTeam;
 	Logger log = Logger.getLogger("umasyu");
 	Logger log1;
-	HashMap<Player,Boolean> PlayerFreezeStats;
 	int splevel = 3;
 	Firework fw1;
 	Scoreboard sb;
@@ -242,7 +241,7 @@ public class onigokko extends JavaPlugin implements Listener
 			player.sendMessage("チームから抜けました。");
 		}
 	}
-	public void SetAllPlayerFreeze()
+	/*public void SetAllPlayerFreeze()
 	{
 		Player[] players = Bukkit.getOnlinePlayers();
 		for(Player p : players)
@@ -257,7 +256,7 @@ public class onigokko extends JavaPlugin implements Listener
 		{
 			PlayerFreezeStats.put(p, true);
 		}
-	}
+	}*/
 	
 	public void giveItemTeamMember(Team team,ItemStack item)
 	{

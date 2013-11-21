@@ -27,7 +27,13 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import com.ur.onigokko.commands.BlueTeamAddCommand;
+import com.ur.onigokko.commands.BlueTeamTeleportCommand;
+import com.ur.onigokko.commands.ExitCommand;
+import com.ur.onigokko.commands.OnlinePlayersTabCompleter;
 import com.ur.onigokko.commands.ReadyCommand;
+import com.ur.onigokko.commands.RedTeamAddCommand;
+import com.ur.onigokko.commands.RedTeamTeleportCommand;
 //import org.kitteh.tag.TagAPI;
 
 
@@ -64,7 +70,14 @@ public class Main extends JavaPlugin implements Listener
 		CommandsIntalize();
 	}
 	public void CommandsIntalize() {
-		ReadyC = new ReadyCommand(this);
+		getCommand("onigokko-ready").setExecutor( new ReadyCommand(this));
+		getCommand("onigokko-exit").setExecutor(new ExitCommand(this));
+		getCommand("onigokko-b").setExecutor(new BlueTeamAddCommand(this));
+		getCommand("onigokko-b").setTabCompleter(new OnlinePlayersTabCompleter());
+		getCommand("onigokko-r").setExecutor(new RedTeamAddCommand(this));
+		getCommand("onigokko-r").setTabCompleter(new OnlinePlayersTabCompleter());
+		getCommand("onigokko-tp-r").setExecutor(new RedTeamTeleportCommand(this));
+		getCommand("onigokko-tp-b").setExecutor(new BlueTeamTeleportCommand(this));
 	}
 	public void onDisable()
 	{
@@ -137,121 +150,9 @@ public class Main extends JavaPlugin implements Listener
 					p.sendMessage(SMessage1);
 				}
 				return true;
-			}
-			
-			
+			}	
 		}
-		if (cmd.getName().equalsIgnoreCase("onigokko-ready"))
-		{
-			if (SenderCheck(sender) >= 1)
-			{
-				if(alreadystart == true)
-				{
-					if (SenderCheck(sender) == 1)
-					{
-						sender.sendMessage("すでに準備しています。");
-					}
-					return false;
-				}
-				ongk.createTeam();
-				ongk.ready();
-				alreadystart = true;
-				sbm.refresh();
-				return true;
-					
-			}
-		}
-		if (cmd.getName().equalsIgnoreCase("onigokko-exit"))
-		{
-			if (SenderCheck(sender) >= 1)
-			{
-				if (alreadystart == true)
-				{
-					ongk.exit();
-					alreadystart = false;
-					return true;
-				}
-				if (SenderCheck(sender) == 1)
-				{
-					sender.sendMessage("ゲームが開始されていません。");
-					return true;
-				}
-				return false;
-					
-			}
-		}
-		if (cmd.getName().equalsIgnoreCase("onigokko-b"))
-		{
-			if (alreadystart == true)
-			{
-				if (SenderCheck(sender) >= 1)
-				{
-					Player name = Bukkit.getPlayer(args[0]);
-					if (name.isOnline() == false)
-					{
-						if(SenderCheck(sender) == 1)
-						{
-						sender.sendMessage(name.toString() + "はオンラインではありません!");
-						}
-						return true;
-					}
-					ongk.PlayerPickUpBlueTeam(name);
-					return true;
-				}
-				
-			}
-			
-		}
-		if (cmd.getName().equalsIgnoreCase("onigokko-r"))
-		{
-			if (alreadystart == true)
-			{
-				if (SenderCheck(sender) >= 1)
-				{
-					Player name = Bukkit.getPlayer(args[0]);
-					if (name.isOnline() == false)
-					{
-						if(SenderCheck(sender) == 1)
-						{
-						sender.sendMessage(name.toString() + "はオンラインではありません!");
-						}
-						return true;
-					}
-					ongk.PlayerAddRedteam(name);
-					return true;
-				}
-				
-			}
-			
-		}
-		if (cmd.getName().equalsIgnoreCase("onigokko-tp-r"))
-		{
-			if (SenderCheck(sender) >= 1)
-			{
-				if (alreadystart == false)
-				{
-					if(SenderCheck(sender) == 1)
-					{
-						sender.sendMessage("ゲームが始まっていません。");
-						return true;
-					}
-				}
-				if(args[0] == null || args[1] == null || args[2] == null)
-				{
-					if(SenderCheck(sender) == 1)
-					{
-						sender.sendMessage("値が不足または不正です。");
-						return true;
-					}
-				}
-					Double x = Double.parseDouble(args[0]);
-					Double y = Double.parseDouble(args[1]);
-					Double z = Double.parseDouble(args[2]);
-				ongk.redTeamTP(x, y, z);
-				return true;
-			}
-		}
-		if (cmd.getName().equalsIgnoreCase("onigokko-tp-b"))
+		/*if (cmd.getName().equalsIgnoreCase("onigokko-tp-b"))
 		{
 			if (SenderCheck(sender) >= 1)
 			{
@@ -277,7 +178,7 @@ public class Main extends JavaPlugin implements Listener
 				ongk.BlueTeamMemberTP(x, y, z);
 				return true;
 			}
-		}
+		}*/
 		if(cmd.getName().equalsIgnoreCase("onigokko-remove"))
 		{
 			if(SenderCheck(sender) >= 1)
@@ -303,7 +204,7 @@ public class Main extends JavaPlugin implements Listener
 				}
 			}
 		}
-		if(cmd.getName().equalsIgnoreCase("onigokko-freeze"))
+		/*if(cmd.getName().equalsIgnoreCase("onigokko-freeze"))
 		{
 			if(SenderCheck(sender) >= 1)
 			{
@@ -344,7 +245,7 @@ public class Main extends JavaPlugin implements Listener
 				ongk.setPlayerUnFreezed(Bukkit.getPlayer(args[0]));
 				return true;
 			}
-		}
+		}*/
 		if(cmd.getName().equalsIgnoreCase("onigokko-hs"))
 		{
 			if(SenderCheck(sender) >= 1)
@@ -362,7 +263,7 @@ public class Main extends JavaPlugin implements Listener
 				return true;
 			}
 		}
-		if(cmd.getName().equalsIgnoreCase("onigokko-freeze-all"))
+		/*if(cmd.getName().equalsIgnoreCase("onigokko-freeze-all"))
 		{
 			if(SenderCheck(sender) >= 1)
 			{
@@ -377,8 +278,8 @@ public class Main extends JavaPlugin implements Listener
 				ongk.SetAllPlayerFreeze();
 				return true;
 			}
-		}
-		if(cmd.getName().equalsIgnoreCase("onigokko-unfreeze-all"))
+		}*/
+		/*if(cmd.getName().equalsIgnoreCase("onigokko-unfreeze-all"))
 		{
 			if(SenderCheck(sender) >= 1)
 			{
@@ -393,7 +294,7 @@ public class Main extends JavaPlugin implements Listener
 				ongk.SetAllPlayerUnFreeze();
 				return true;
 			}
-		}
+		}*/
 		if(cmd.getName().equalsIgnoreCase("onigokko-give-r"))
 		{
 			if(SenderCheck(sender) >= 1)

@@ -1,53 +1,51 @@
 name: onigokko
 main: com.ur.onigokko.Main
-version: 0.3
-author: _RailgunS_
+version: 2.1
+author: [_RailgunS_,umasyu]
 commands:
   onigokko-ready:
     description: Prepare for Onigokko
     usage: /onigokko-ready
+    aliases: ore
   onigokko-exit:
     description: Exit Onigokko
     usage: /onigokko-exit
+    aliases: oe
   onigokko-b:
     description: Add BlueTeamMember and Delete From redTeam
     usage: /onigokko-b (player)
+    aliases: ob
   onigokko-b-random:
     description: Pick up players to Blue Team
     usage: /onigokko-b-random [amount]
+    aliases: obr
   onigokko-tp-r:
     description: Tereport RedTeam
     usage: /onigokko-tp-r <x> <y> <z>
+    aliases: otr
   onigokko-tp-b:
     description: Teleport BlueTeam
     usage: /onigokko-tp-b <x> <y> <z>
+    aliases: otb
   onigokko-r:
     description: Add RedTeamMember
     usage: /onigokko-r (player)
+    aliases: or
   onigokko-remove:
     description: Remove Player from the team
     usage: /onigokko-remove (player)
-  onigokko-freeze:
-    description: Freeze Player
-    usage: /onigokko-freeze [RedTeamPlayer]
-  onigokko-unfreeze:
-    description: UnFreeze Player
-    usage: /onigokko-unfreeze [RedTeamPlayer]
-  onigokko-freeze-all:
-    description: Freeze all
-    usage: /onigokko-freeze-all
-  onigokko-unfreeze-all:
-    description: UnFreeze all
-    usage: /onigokko-unfreeze-all
+    aliases: orv
   onigokko-hs:
     description: Set Hunter Speed Level
     usage: /onigokko-hs [level]
   onigokko-give-r:
     description: Give item to Red Team
     usage: /onigokko-give-r [id] [amount]
+    aliases: ogr
   onigokko-give-b:
     description: Give item to Blue Team
     usage: /onigokko-give-b [id] [amount]
+    aliases: ogb
   diamond-enderchest:
     description: get Player's amount of DIAMOND in enderchest
     usage: /diamond-enderchest (player)
@@ -57,6 +55,7 @@ commands:
   sneak:
     description: Toggle Sneaking
     usage: /sneak
+    aliases: s
   debug:
     description: debug
     usage: /debug additem/removeitem

@@ -8,56 +8,53 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import com.ur.onigokko.Main;
-import com.ur.onigokko.SbManager;
 import com.ur.onigokko.Variables;
 import com.ur.onigokko.onigokko;
 
-public class ReadyCommand implements CommandExecutor {
+public class ExitCommand implements CommandExecutor {
 	private Main plugin;
 	private onigokko ongk;
-	private SbManager sm;
 	private CommandSender sender;
-	public ReadyCommand(Main plugin)
+	public ExitCommand(Main plugin)
 	{
 		this.plugin = plugin;
 		ongk = plugin.getOnigokko();
-		sm = plugin.getSbManager();
 	}
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		this.sender = sender;
-		if( sender instanceof BlockCommandSender || sender instanceof ConsoleCommandSender)
+		if(sender instanceof BlockCommandSender || sender instanceof ConsoleCommandSender)
 		{
-			
 			perform();
 			return true;
-			
-		}else if (sender instanceof Player)
+		} else if(sender instanceof Player)
 		{
 			Player player = (Player)sender;
 			if(player.isOp() || player.hasPermission("onigokko.gm"))
 			{
 				perform();
 				return true;
-			} else {
+			}else{
 				player.sendMessage(Variables.MESSAGE_NotHavePermission);
 				return true;
 			}
-		} 
+		}
+		
 		return false;
 	}
-	public void perform(){
+	public void perform()
+	{
 		if(plugin.getStartState())
 		{
-			sender.sendMessage("すでにゲームは開始されています。");
+			plugin.setStartState(false);
+			ongk.exit();
+			return;
+		}else{
+			sender.sendMessage("ゲームが開始されていません。");
 			return;
 		}
-		ongk.createTeam();
-		ongk.ready();
-		plugin.setStartState(true);
-		sm.refresh();
-		
 	}
 
 }
