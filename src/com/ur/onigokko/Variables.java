@@ -20,6 +20,7 @@ public class Variables {
 	public static Material MONEY_ITEM = Material.DIAMOND;
 	public static String MONEY_ITEM_NAME = "お金";
 	public static String SNOWBALL_NAME = "閃光弾";
+	public static String MESSAGE_NotHavePermission = "あなたはゲームマスターじゃないですよね？何やってるんですか？";
 	
 
 }

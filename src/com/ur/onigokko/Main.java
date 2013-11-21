@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,6 +26,8 @@ import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
+
+import com.ur.onigokko.commands.ReadyCommand;
 //import org.kitteh.tag.TagAPI;
 
 
@@ -43,6 +46,7 @@ public class Main extends JavaPlugin implements Listener
 	Team blueTeam;
 	Objective ob;
 	SbManager sbm;
+	CommandExecutor ReadyC;
 	public void onEnable()
 	{
 		ongk = new onigokko(this);
@@ -57,10 +61,30 @@ public class Main extends JavaPlugin implements Listener
 		redTeam =sbm.getRedTeam();
 		blueTeam = sbm.getBlueTeam();
 		ob = sbm.getObjective();
+		CommandsIntalize();
+	}
+	public void CommandsIntalize() {
+		ReadyC = new ReadyCommand(this);
 	}
 	public void onDisable()
 	{
 		
+	}
+	public boolean getStartState()
+	{
+		return alreadystart;
+	}
+	public void setStartState(boolean tf)
+	{
+		alreadystart = tf;
+	}
+	public onigokko getOnigokko()
+	{
+		return ongk;
+	}
+	public SbManager getSbManager()
+	{
+		return sbm;
 	}
 	public boolean onCommand(CommandSender sender,Command cmd,String commandlabel,String[] args)
 	{
