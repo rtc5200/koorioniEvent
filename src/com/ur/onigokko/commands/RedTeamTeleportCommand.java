@@ -64,7 +64,7 @@ public class RedTeamTeleportCommand implements CommandExecutor {
 		Double y = Double.parseDouble(args[1]);
 		Double z = Double.parseDouble(args[2]);
 		ongk.redTeamTP(x, y, z);
-		sender.sendMessage("逃走者チームを指定座標へTPしました");
+		sender.sendMessage("逃走者チームをテレポートしました");
 	}
 
 }

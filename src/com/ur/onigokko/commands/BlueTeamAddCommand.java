@@ -73,6 +73,7 @@ public class BlueTeamAddCommand implements CommandExecutor {
 			if(plugin.getStartState())
 			{
 				ongk.PlayerPickUpBlueTeam(player);
+				sender.sendMessage(player.getName() + "を鬼チームに追加しました");
 				return;
 			}else{
 				sender.sendMessage(Variables.MESSAGE_NotStartedGame);

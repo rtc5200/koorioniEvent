@@ -70,6 +70,7 @@ public class RedTeamAddCommand implements CommandExecutor {
 			if(player.isOnline())
 			{
 				ongk.PlayerAddRedteam(player);
+				sender.sendMessage(player.getName() + "を逃走者チームに追加しました");
 				return;
 			}else{
 				sender.sendMessage(Variables.MESSAGE_PlayerIsNotOnline);

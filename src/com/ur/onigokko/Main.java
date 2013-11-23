@@ -1,5 +1,6 @@
 package com.ur.onigokko;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -27,6 +28,7 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import com.ur.bookmessage.TextLoader;
 import com.ur.onigokko.commands.BlueTeamAddCommand;
 import com.ur.onigokko.commands.BlueTeamTeleportCommand;
 import com.ur.onigokko.commands.ExitCommand;
@@ -53,6 +55,7 @@ public class Main extends JavaPlugin implements Listener
 	Objective ob;
 	SbManager sbm;
 	CommandExecutor ReadyC;
+	TextLoader loader;
 	public void onEnable()
 	{
 		ongk = new onigokko(this);
@@ -68,6 +71,7 @@ public class Main extends JavaPlugin implements Listener
 		blueTeam = sbm.getBlueTeam();
 		ob = sbm.getObjective();
 		CommandsIntalize();
+		loader = new TextLoader(this);
 	}
 	public void CommandsIntalize() {
 		getCommand("onigokko-ready").setExecutor( new ReadyCommand(this));
@@ -128,6 +132,32 @@ public class Main extends JavaPlugin implements Listener
 			{
 				ItemStack is = InventoryUtil.getPlayerItem((Player)sender, Material.DIAMOND);
 				sender.sendMessage("amount = " + is.getAmount());
+				return true;
+			}
+			if(args[0].equalsIgnoreCase("sendtext"))
+			{
+				int i = -1;
+				try{
+					 i = Integer.parseInt(args[1]);
+				}catch(NumberFormatException e)
+				{
+					sender.sendMessage(e.getMessage());
+					return false;
+				}
+				if(i == -1)
+				{
+					sender.sendMessage("数字がおかしいです");
+					return false;
+				}
+				
+				String message = loader.getTextOfLine(i);
+				if(message != null)
+				{
+					sender.sendMessage(message);
+				}else{
+					sender.sendMessage("Nullエラー");
+				}
+				
 				return true;
 			}
 		}
@@ -573,5 +603,8 @@ public class Main extends JavaPlugin implements Listener
 		player.teleport(loc);*/
 		
 	}
+	 public File getPluginJarFile() {
+	        return this.getFile();
+	    }
 	
 }

@@ -60,10 +60,12 @@ public class BlueTeamTeleportCommand implements CommandExecutor {
 	}
 	public void perform()
 	{
+		
 		Double x = Double.parseDouble(args[0]);
 		Double y = Double.parseDouble(args[1]);
 		Double z = Double.parseDouble(args[2]);
 		ongk.BlueTeamMemberTP(x, y, z);
+		sender.sendMessage("鬼チームをテレポートしました");
 	}
 
 }
