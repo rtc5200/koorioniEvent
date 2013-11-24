@@ -36,6 +36,8 @@ import com.ur.onigokko.commands.OnlinePlayersTabCompleter;
 import com.ur.onigokko.commands.ReadyCommand;
 import com.ur.onigokko.commands.RedTeamAddCommand;
 import com.ur.onigokko.commands.RedTeamTeleportCommand;
+import com.ur.onigokko.events.ItemUseEvent;
+import com.ur.onigokko.events.ProjectileEvent;
 //import org.kitteh.tag.TagAPI;
 
 
@@ -63,6 +65,8 @@ public class Main extends JavaPlugin implements Listener
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(this, this);
 		pm.registerEvents(ongk, this);
+		pm.registerEvents(new ItemUseEvent(this), this);
+		pm.registerEvents(new ProjectileEvent(this), this);
 		BukkitScheduler bs = getServer().getScheduler();
 		bs.scheduleSyncRepeatingTask(this, new Delay3(this), 0, 10);
 		sbm = ongk.sm;
@@ -144,7 +148,7 @@ public class Main extends JavaPlugin implements Listener
 					sender.sendMessage(e.getMessage());
 					return false;
 				}
-				if(i == -1)
+				if(i<= 0)
 				{
 					sender.sendMessage("数字がおかしいです");
 					return false;

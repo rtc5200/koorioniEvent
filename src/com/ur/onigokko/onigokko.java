@@ -60,7 +60,7 @@ public class onigokko extends JavaPlugin implements Listener
 	Boolean ticancel = false;
 	SbManager sm;
 	ItemUtility iu;
-	ItemPotioner ipn;
+	public ItemPotioner ipn;
 	public onigokko(Main main){
 		this.main = main;
 		sm = new SbManager(main);
@@ -355,7 +355,7 @@ public class onigokko extends JavaPlugin implements Listener
 				}
 			}
 		}
-	@EventHandler
+	/*@EventHandler
 	public void onhit(ProjectileHitEvent event)
 	{
 		Projectile pjl = event.getEntity();//CraftSnowBall
@@ -453,7 +453,7 @@ public class onigokko extends JavaPlugin implements Listener
 			}
 		}
 	}
-	
+	*/
 	@EventHandler(priority = EventPriority.HIGH)
 	public void chat(AsyncPlayerChatEvent event)
 	{
@@ -479,7 +479,7 @@ public class onigokko extends JavaPlugin implements Listener
 			chatmessage = chatmessage.replaceAll("<umasyu_c>", uc);
 			event.setMessage(chatmessage);
 	}
-	@EventHandler(priority = EventPriority.HIGH)
+	/*@EventHandler(priority = EventPriority.HIGH)
 	public void itemuse(PlayerInteractEvent event)
 	{
 		Player player = event.getPlayer();
@@ -546,7 +546,7 @@ public class onigokko extends JavaPlugin implements Listener
 			{
 				player.chat("/sneak");
 			}
-	}
+	}*/
 	public void CountDownPlayerExp(int time){
 		Player[] players = Bukkit.getOnlinePlayers();
 		for(Player p : players)
@@ -578,19 +578,15 @@ public class onigokko extends JavaPlugin implements Listener
 	{
 		for(OfflinePlayer p : sm.getBlueTeamMember())
 		{
-			if(p.isOnline())
+			if(p != null)
 			{
-				((Player)p).getInventory().addItem(item);
+				if(p.isOnline())
+				{
+					((Player)p).getInventory().addItem(item);
+				}
 			}
+			
 		}
-	}
-	public void setPlayerFreezed(Player player)
-	{
-		sm.addPlayerBlackTeam(player);
-	}
-	public void setPlayerUnFreezed(Player player)
-	{
-		sm.addPlayerRedTeam(player);
 	}
 	
 }
