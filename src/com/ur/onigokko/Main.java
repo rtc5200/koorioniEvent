@@ -38,6 +38,7 @@ import com.ur.onigokko.commands.RedTeamAddCommand;
 import com.ur.onigokko.commands.RedTeamTeleportCommand;
 import com.ur.onigokko.events.ItemUseEvent;
 import com.ur.onigokko.events.ProjectileEvent;
+import com.ur.onigokko.events.TouchEvent;
 //import org.kitteh.tag.TagAPI;
 
 
@@ -67,6 +68,7 @@ public class Main extends JavaPlugin implements Listener
 		pm.registerEvents(ongk, this);
 		pm.registerEvents(new ItemUseEvent(this), this);
 		pm.registerEvents(new ProjectileEvent(this), this);
+		pm.registerEvents(new TouchEvent(this), this);
 		BukkitScheduler bs = getServer().getScheduler();
 		bs.scheduleSyncRepeatingTask(this, new Delay3(this), 0, 10);
 		sbm = ongk.sm;

@@ -53,6 +53,7 @@ public class SbManager {
 		}else{
 			black = sb.registerNewTeam("black");
 		}
+		//サイドバーも作る
 		red.setAllowFriendlyFire(false);
 		blue.setAllowFriendlyFire(false);
 		black.setAllowFriendlyFire(false);
@@ -225,7 +226,7 @@ public class SbManager {
 		}
 		return result;
 	}
-	public void SetPlayerColor(Player player,ChatColor cc)
+	private void SetPlayerColor(Player player,ChatColor cc)
 	{
 		if(cc == ChatColor.RESET)
 		{

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 public class Utils {
@@ -24,7 +25,10 @@ public class Utils {
         ArrayList<Player> rst = new ArrayList<Player>();
         for ( Player p : players ) 
         {
-            rst.add(p);
+        	if(!p.getGameMode().equals(GameMode.CREATIVE))
+        	{
+        		rst.add(p);
+        	}
         }
         return rst;
     }

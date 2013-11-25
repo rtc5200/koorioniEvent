@@ -86,7 +86,7 @@ public class ItemUseEvent implements Listener{
 			String cg = ChatColor.GREEN.toString();
 			String cm = cr + player.getName() + cg + "が復活!";						
 			main.getServer().broadcastMessage(cm);
-			sm.SetPlayerColor(player, ChatColor.RED);
+			sm.addPlayerRedTeam(player);
 			//score処理
 			String message = "復活アイテムを使ったためスコアは加算されません。";
 			player.sendMessage(ChatColor.GREEN.toString() + message);

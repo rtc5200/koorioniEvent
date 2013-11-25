@@ -229,8 +229,7 @@ public class onigokko extends JavaPlugin implements Listener
 	{
 		if(sm.getPlayerTeam(player) != null)
 		{
-			sm.SetPlayerColor(player, ChatColor.RESET);
-			sm.getPlayerTeam(player).removePlayer(player);
+			sm.removePlayer(player);
 			if(sm.getPlayerTeam(player) == blueTeam)
 			{
 				InventoryUtil.BlueTeamUnEquip(player,this);
@@ -283,7 +282,7 @@ public class onigokko extends JavaPlugin implements Listener
 		splevel = i -1;
 		return;
 	}
-	@EventHandler(priority = EventPriority.HIGH)
+	/*@EventHandler(priority = EventPriority.HIGH)
 	public void edbee(EntityDamageByEntityEvent event)
 	{
 		if(event.getDamager().getType() == EntityType.SNOWBALL)
@@ -354,7 +353,7 @@ public class onigokko extends JavaPlugin implements Listener
 					event.setCancelled(true);
 				}
 			}
-		}
+		}*/
 	/*@EventHandler
 	public void onhit(ProjectileHitEvent event)
 	{
@@ -454,7 +453,7 @@ public class onigokko extends JavaPlugin implements Listener
 		}
 	}
 	*/
-	@EventHandler(priority = EventPriority.HIGH)
+	/*@EventHandler(priority = EventPriority.HIGH)
 	public void chat(AsyncPlayerChatEvent event)
 	{
 		Player player = event.getPlayer();
@@ -478,7 +477,7 @@ public class onigokko extends JavaPlugin implements Listener
 			chatmessage = chatmessage.replaceAll("<umasyu_f>", uf);
 			chatmessage = chatmessage.replaceAll("<umasyu_c>", uc);
 			event.setMessage(chatmessage);
-	}
+	}*/
 	/*@EventHandler(priority = EventPriority.HIGH)
 	public void itemuse(PlayerInteractEvent event)
 	{

@@ -84,7 +84,7 @@ public class ProjectileEvent implements Listener {
 						String cg = ChatColor.GREEN.toString();
 						String cm = cr + shooter.getName() + cg + "が" + cr + p.getName() + cg + "を助けた!";						
 						main.getServer().broadcastMessage(cm);
-						main.getSbManager().SetPlayerColor(p, ChatColor.RED);
+						main.getSbManager().addPlayerRedTeam(p);
 						int alsc = main.getSbManager().getScore(shooter) + 1;
 						main.getSbManager().setScore(shooter, alsc);
 						String message = "[スコア]1ポイント獲得しました。";
